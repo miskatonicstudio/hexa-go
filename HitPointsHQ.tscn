@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+expand_margin_left = 4.0
+expand_margin_right = 12.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+expand_margin_right = 8.0
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+expand_margin_right = 8.0
+
+[node name="HitPointsHQ" type="Control"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSlider" type="VSlider" parent="."]
+margin_left = -10.0
+margin_top = -250.0
+margin_right = 10.0
+margin_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 20, 500 )
+custom_styles/slider = SubResource( 3 )
+custom_styles/grabber_area_highlight = SubResource( 5 )
+custom_styles/grabber_area = SubResource( 4 )
+max_value = 20.0
+value = 20.0
+scrollable = false
+tick_count = 21
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

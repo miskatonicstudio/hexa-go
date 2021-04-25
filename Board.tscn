@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Cell.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PlayerGroup.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HitPointsHQ.tscn" type="PackedScene" id=3]
 
 [node name="Board" type="Node2D"]
 
@@ -123,6 +124,11 @@ belongs_to = 1
 [node name="Discard" parent="PlayerGroupA" index="4"]
 belongs_to = 1
 
+[node name="HitPointsHQ" parent="PlayerGroupA" instance=ExtResource( 3 )]
+margin_left = 250.0
+margin_right = 250.0
+rect_scale = Vector2( 2, 2 )
+
 [node name="PlayerGroupB" parent="." instance=ExtResource( 2 )]
 position = Vector2( -700, 0 )
 
@@ -140,6 +146,11 @@ belongs_to = 2
 
 [node name="Discard" parent="PlayerGroupB" index="4"]
 belongs_to = 2
+
+[node name="HitPointsHQ" parent="PlayerGroupB" instance=ExtResource( 3 )]
+margin_left = -250.0
+margin_right = -250.0
+rect_scale = Vector2( 2, 2 )
 
 [editable path="PlayerGroupA"]
 
