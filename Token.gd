@@ -4,12 +4,14 @@ extends Node2D
 export (int) var belongs_to = 0
 
 onready var sprite = $Sprite
-onready var label = $Label
+onready var label = $WoundCount
 onready var rotation_indicator = $RotationIndicator
 
 var rotation_in_progress = false
 var original_rotation_point = null
 var original_token_rotation = null
+
+var wound_count = 0 setget set_wound_count
 
 
 func initialize(belongs_to, number):
@@ -19,7 +21,15 @@ func initialize(belongs_to, number):
 	elif belongs_to == 2:
 		sprite.modulate = Color.orange
 	sprite.texture = load("res://tokens/%d.png" % number)
-#	label.text = str(number)
+
+
+func set_wound_count(value):
+	value = max(0, value)
+	wound_count = value
+	if wound_count > 0:
+		label.text = str(wound_count)
+	else:
+		label.text = ""
 
 
 func begin_rotation():
