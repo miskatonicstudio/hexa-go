@@ -1,4 +1,5 @@
 extends Node2D
+class_name Cell
 
 const COLOR_ACTIVATED = Color.blue
 const COLOR_HIGHLIGHTED = Color.yellow
@@ -53,7 +54,8 @@ func _on_HexArea_clicked():
 				tokens_left.text = str(len(global.TOKENS[belongs_to]))
 				var new_token = load("res://Token.tscn").instance()
 				new_token.initialize(belongs_to, token_number)
-				cell.add_child(new_token)
+				add_child(new_token)
+				new_token.reparent(self, cell)
 				new_token.deactivate()
 				break
 		return
@@ -120,23 +122,22 @@ func _on_cell_selected(cell):
 	if cell.type == TYPE_DISCARD:
 		if type == TYPE_HAND and token and is_activated():
 			# TODO: send signal and add discarded token to the list
-			remove_child(token)
+			token.reparent(self, cell)
 		if type == TYPE_BOARD and token and token.is_activated():
-			remove_child(token)
+			token.reparent(self, cell)
 		activate()
 	if cell.type == TYPE_BOARD:
 		if type == TYPE_HAND and is_activated():
 			if token and not cell.get_token():
-				remove_child(token)
-				cell.add_child(token)
+				token.reparent(self, cell)
 				token.activate()
 				cell.deactivate(false)
 				deactivate()
 			else:
 				deactivate()
 		elif type == TYPE_BOARD and token and token.is_activated():
-			remove_child(token)
-			cell.add_child(token)
+			if cell.is_activated():
+				token.reparent(self, cell)
 			cell.deactivate(false)
 			activate()
 		if type == TYPE_STACK:

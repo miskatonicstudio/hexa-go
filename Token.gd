@@ -9,6 +9,7 @@ onready var wound_count_label = $CenterContainer/WoundCount
 onready var rotation_indicator = $RotationIndicator
 onready var area = $HexArea
 onready var timer = $Timer
+onready var tween = $Tween
 
 onready var wound_add = $HexAreaWoundAdd
 onready var wound_remove = $HexAreaWoundRemove
@@ -47,6 +48,8 @@ func set_wound_count(value):
 
 
 func _input(event):
+	if tween.is_processing():
+		return
 	if Input.is_action_just_released("click"):
 		long_timer.stop()
 		rotation_in_progress = false
@@ -128,3 +131,21 @@ func set_wound_ui(visible):
 	if visible:
 		rotation_in_progress = false
 		rotation_indicator.hide()
+
+
+func reparent(from_node, to_node):
+	if self in from_node.get_children():
+		from_node.remove_child(self)
+	to_node.add_child(self)
+	self.position = to_node.to_local(from_node.global_position)
+	tween.interpolate_property(
+		self, "position", null, Vector2(0, 0), 0.5,
+		Tween.TRANS_SINE, Tween.EASE_IN_OUT
+	)
+	tween.start()
+
+
+func _on_Tween_tween_all_completed():
+	if self.get_parent().type == Cell.TYPE_DISCARD:
+		self.get_parent().remove_child(self)
+		self.queue_free()
