@@ -1,35 +1,36 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Cell.tscn" type="PackedScene" id=1]
-
+[ext_resource path="res://hex_filled.png" type="Texture" id=2]
 
 [node name="PlayerGroup" type="Node2D"]
 
-[node name="Stack" parent="." groups=[
-"stack",
-] instance=ExtResource( 1 )]
+[node name="Stack" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -420 )
 type = 1
 
-[node name="Cell1" parent="." groups=[
-"hand",
-] instance=ExtResource( 1 )]
+[node name="Sprite" parent="Stack" index="1"]
+texture = ExtResource( 2 )
+
+[node name="Cell1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -210 )
 type = 3
 
-[node name="Cell2" parent="." groups=[
-"hand",
-] instance=ExtResource( 1 )]
+[node name="Cell2" parent="." instance=ExtResource( 1 )]
 type = 3
 
-[node name="Cell3" parent="." groups=[
-"hand",
-] instance=ExtResource( 1 )]
+[node name="Cell3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 210 )
 type = 3
 
-[node name="Discard" parent="." groups=[
-"discard",
-] instance=ExtResource( 1 )]
+[node name="Discard" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 420 )
 type = 2
+
+[node name="Sprite" parent="Discard" index="1"]
+self_modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
+texture = ExtResource( 2 )
+
+[editable path="Stack"]
+
+[editable path="Discard"]
