@@ -4,7 +4,7 @@ signal clicked
 signal unclicked
 
 
-func _on_HexArea_input_event(viewport, event, shape_idx):
+func _on_HexArea_input_event(_viewport, _event, shape_idx):
 	if shape_idx != 0:
 		return
 	if Input.is_action_just_pressed("click"):

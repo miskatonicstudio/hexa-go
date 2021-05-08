@@ -14,14 +14,26 @@ const TYPE_HAND = 3
 
 onready var sprite = $Sprite
 onready var area = $HexArea
+onready var deck_ui = $CenterContainer/Deck
+onready var tokens_left = $CenterContainer/Deck/TokensLeft
+onready var discard_ui = $CenterContainer/Discard
 
 var blocked = false
+
+
+func _enter_tree():
+	var sprite = get_node("Sprite")
+	sprite.add_to_group("belongs_to:" + str(belongs_to))
 
 
 func _ready():
 	global.connect("cell_selected", self, "_on_cell_selected")
 	global.connect("lock", self, "_on_lock")
 	global.connect("unlock", self, "_on_unlock")
+	if type == TYPE_STACK:
+		deck_ui.show()
+	elif type == TYPE_DISCARD:
+		discard_ui.show()
 
 
 func _on_HexArea_clicked():
@@ -38,6 +50,7 @@ func _on_HexArea_clicked():
 				if token_number == null:
 					# TODO: probably send a signal: no tokens available
 					break
+				tokens_left.text = str(len(global.TOKENS[belongs_to]))
 				var new_token = load("res://Token.tscn").instance()
 				new_token.initialize(belongs_to, token_number)
 				cell.add_child(new_token)
@@ -128,7 +141,11 @@ func _on_cell_selected(cell):
 			activate()
 		if type == TYPE_STACK:
 			deactivate()
-		if type == TYPE_DISCARD and cell.get_token() and belongs_to != cell.get_token().belongs_to:
+		if (
+			type == TYPE_DISCARD and
+			cell.get_token()
+			and belongs_to != cell.get_token().belongs_to
+		):
 			deactivate()
 
 

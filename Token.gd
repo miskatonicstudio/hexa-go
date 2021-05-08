@@ -4,7 +4,8 @@ extends Node2D
 export (int) var belongs_to = 0
 export var token_number = 0
 
-onready var label = $WoundCount
+onready var center_label = $CenterContainer
+onready var wound_count_label = $CenterContainer/WoundCount
 onready var rotation_indicator = $RotationIndicator
 onready var area = $HexArea
 onready var timer = $Timer
@@ -12,8 +13,6 @@ onready var timer = $Timer
 onready var wound_add = $HexAreaWoundAdd
 onready var wound_remove = $HexAreaWoundRemove
 onready var long_timer = $LongTimer
-
-# Not `onready` because it's set before `_ready`
 var sprite = null
 
 var rotation_in_progress = false
@@ -37,9 +36,14 @@ func set_wound_count(value):
 	value = max(0, value)
 	wound_count = value
 	if wound_count > 0:
-		label.text = str(wound_count)
+		wound_count_label.text = str(wound_count)
+		if token_number == 1:
+			wound_count_label.text += "/20"
 	else:
-		label.text = ""
+		if token_number == 1:
+			wound_count_label.text = "0/20"
+		else:
+			wound_count_label.text = ""
 
 
 func _input(event):
@@ -50,7 +54,7 @@ func _input(event):
 		sprite.rotation_degrees = final_angle
 	if rotation_in_progress and event is InputEventMouseMotion:
 		long_timer.stop()
-		var new_rotation_position = label.get_local_mouse_position()
+		var new_rotation_position = center_label.get_local_mouse_position()
 		var angle = original_rotation_point.angle_to(new_rotation_position)
 		angle = rad2deg(angle)
 		sprite.rotation_degrees = original_token_rotation + angle
@@ -67,7 +71,7 @@ func _on_Timer_timeout():
 	# Longer click = start rotation
 	if not wound_add.visible:
 		rotation_in_progress = true
-		original_rotation_point = label.get_local_mouse_position()
+		original_rotation_point = center_label.get_local_mouse_position()
 		original_token_rotation = sprite.rotation_degrees
 
 
@@ -75,6 +79,7 @@ func activate():
 	rotation_indicator.show()
 	area.input_pickable = true
 	long_timer.start()
+	set_wound_count(self.wound_count)
 
 
 func deactivate():

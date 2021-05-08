@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Cell.tscn" type="PackedScene" id=1]
 [ext_resource path="res://hex_filled.png" type="Texture" id=2]
+[ext_resource path="res://hex_black.png" type="Texture" id=3]
 
 [node name="PlayerGroup" type="Node2D"]
 
@@ -28,8 +29,7 @@ position = Vector2( 0, 420 )
 type = 2
 
 [node name="Sprite" parent="Discard" index="1"]
-self_modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [editable path="Stack"]
 

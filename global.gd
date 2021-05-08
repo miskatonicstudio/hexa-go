@@ -10,6 +10,7 @@ var TOKENS = {
 }
 # TODO: implement discards
 
+
 func _ready():
 	randomize()
 	for player in [1,2]:
@@ -17,8 +18,10 @@ func _ready():
 			TOKENS[player].append(token)
 		TOKENS[player].shuffle()
 		TOKENS[player].push_front(1)
-	
-	get_tree().connect("node_added", self, "_on_node_added")
+
+
+func _enter_tree():
+	get_tree().connect("node_added", self, "apply_player_color")
 
 
 func get_token(player):
@@ -26,8 +29,11 @@ func get_token(player):
 
 
 func _on_node_added(node):
-	# TODO: this is used only in tokens, move it there
+	apply_player_color(node)
+
+
+func apply_player_color(node):
 	if "belongs_to:1" in node.get_groups():
-		node.self_modulate = Color.cyan
+		node.self_modulate = Color.deepskyblue
 	if "belongs_to:2" in node.get_groups():
-		node.self_modulate = Color.orange
+		node.self_modulate = Color.tomato
