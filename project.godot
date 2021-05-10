@@ -12,16 +12,22 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Cell",
 "language": "GDScript",
-"path": "res://Cell.gd"
+"path": "res://scenes/Cell.gd"
+}, {
+"base": "Node2D",
+"class": "Token",
+"language": "GDScript",
+"path": "res://scenes/Token.gd"
 } ]
 _global_script_class_icons={
-"Cell": ""
+"Cell": "",
+"Token": ""
 }
 
 [application]
 
 config/name="Hexa-Go"
-run/main_scene="res://Board.tscn"
+run/main_scene="res://scenes/Board.tscn"
 config/icon="res://icon.png"
 
 [autoload]

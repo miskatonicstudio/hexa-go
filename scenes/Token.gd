@@ -1,4 +1,5 @@
 extends Node2D
+class_name Token
 
 
 export (int) var belongs_to = 0

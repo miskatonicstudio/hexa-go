@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/reset_rotation_icon.png-ed457c6904cb2c8f6bcec2b1b61e1727.stex"
+path="res://.import/hex_frame.png-b5131222d34cbe82a47c2c361f7a9654.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reset_rotation_icon.png"
-dest_files=[ "res://.import/reset_rotation_icon.png-ed457c6904cb2c8f6bcec2b1b61e1727.stex" ]
+source_file="res://images/hex_frame.png"
+dest_files=[ "res://.import/hex_frame.png-b5131222d34cbe82a47c2c361f7a9654.stex" ]
 
 [params]
 

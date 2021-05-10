@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hex.png-ea61bde9ec80337e0039cdc9c72cf6f7.stex"
+path="res://.import/rotation.png-951d2919fc4c5f8c54b9c2f0ffcbb73f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hex.png"
-dest_files=[ "res://.import/hex.png-ea61bde9ec80337e0039cdc9c72cf6f7.stex" ]
+source_file="res://images/rotation.png"
+dest_files=[ "res://.import/rotation.png-951d2919fc4c5f8c54b9c2f0ffcbb73f.stex" ]
 
 [params]
 

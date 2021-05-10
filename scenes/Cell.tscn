@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Cell.gd" type="Script" id=1]
-[ext_resource path="res://hex.png" type="Texture" id=2]
-[ext_resource path="res://HexArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Cell.gd" type="Script" id=1]
+[ext_resource path="res://images/hex_frame.png" type="Texture" id=2]
+[ext_resource path="res://scenes/HexArea.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fonts/cell_font.tres" type="DynamicFont" id=4]
 
 [node name="Cell" type="Node2D" groups=[

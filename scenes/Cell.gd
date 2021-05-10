@@ -52,7 +52,7 @@ func _on_HexArea_clicked():
 					# TODO: probably send a signal: no tokens available
 					break
 				tokens_left.text = str(len(global.TOKENS[belongs_to]))
-				var new_token = load("res://Token.tscn").instance()
+				var new_token = load("res://scenes/Token.tscn").instance()
 				new_token.initialize(belongs_to, token_number)
 				add_child(new_token)
 				new_token.reparent(self, cell)

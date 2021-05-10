@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hex_filled.png-873b50132195d254c9242985b44faae5.stex"
+path="res://.import/hex_deck.png-dcb4ac187321105bc22817574694b8c6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hex_filled.png"
-dest_files=[ "res://.import/hex_filled.png-873b50132195d254c9242985b44faae5.stex" ]
+source_file="res://images/hex_deck.png"
+dest_files=[ "res://.import/hex_deck.png-dcb4ac187321105bc22817574694b8c6.stex" ]
 
 [params]
 
